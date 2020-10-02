@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fuentes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <!-- icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- animate -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+      crossorigin="anonymous"
+    />
+    <!-- interno -->
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>La Floreria</title>
+  </head>
+
+  <body>
+     <div class="div-shopping" >
+
+      <div class="shopping-cart" id="carrito" onclick="carrito()">
+        <span class="material-icons"> shopping_cart </span>
+        <span id="cantidad" class="number"></span>
+      </div>
+
+    </div>
+    <nav>
+      <!-- <div class="fondo-nav" ></div> -->
+      <div class="caja-nav" id="nav">
+        <div class="caja-logo">
+          <span class="material-icons color-4 large"> emoji_nature </span>
+          <!-- <p>La Floreria</p> -->
+        </div>
+        <ul>
+          <li><a class="link" href="#" onclick="showArea(1)">Inicio</a></li>
+          <li>
+            <a class="link" href="#catalogo" onclick="showArea(1); read()"
+              >Productos</a
+            >
+          </li>
+          <li>
+            <a class="link" href="#productos" onclick="showArea(2); read()"
+              >Agregar</a
+            >
+          </li>
+          <li>
+            <a class="link" href="#nosotros" onclick="showArea(3)">Nosotros</a>
+          </li>
+          <li>
+            <a class="link" href="#pie">Info</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <header id="inicio">
+      <h1 class="wow bounceInUp">La floreria</h1>
+    </header>
+
+    <section id="hora">
+      <div id="clockdate">
+        <div class="clockdate-wrapper">
+          <div id="clock"></div>
+          <div id="date"></div>
+        </div>
+      </div>
+    </section>
+    <section id="catalogo" class="">
+      <div class="container" id="caja-catalogo">
+        <!-- <p>catalogo</p> -->
+      </div>
+    </section>
+    <section id="productos" class="">
+      <div class="container" id="contenedor-tabla">
+        <div>
+          <div class="float-right">
+            <button onclick="showModal()" class="boton-nuevo">
+              Nuevo Producto
+            </button>
+          </div>
+
+          <table id="data">
+            <tr id="vertical">
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Ceación</th>
+              <th>Precio</th>
+              <th colspan="2">Acciones</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros" class="bg-3-rgba">
+      <div class="container">
+        
+      </div>
+    </section>
+
+    <footer id="pie">
+      <div class="caja-footer">
+        <div class="caja-logo">
+          <span class="material-icons color-4 large"> emoji_nature </span>
+          <!-- <p>La Floreria</p> -->
+        </div>
+      </div>
+      <div class="caja-footer">
+        <ol>
+          <li><a class="link" href="#" onclick="showArea(1)">Inicio</a></li>
+          <li>
+            <a class="link" href="#catalogo" onclick="showArea(1); read()"
+              >Productos</a
+            >
+          </li>
+          <li>
+            <a class="link" href="#productos" onclick="showArea(2); read()"
+              >Agregar</a
+            >
+          </li>
+          <li>
+            <a class="link" href="#nosotros" onclick="showArea(3)">Nosotros</a>
+          </li>
+          <li>
+            <a class="link" href="#pie">Info</a>
+          </li>
+        </ol>
+      </div>
+      <div class="caja-footer">
+        <a href="https://www.facebook.com/" target="_blank">
+          <img
+            src="https://image.flaticon.com/icons/png/512/124/124010.png"
+            alt="logo-facebook"
+            class="icono"
+          />
+        </a>
+
+        <a
+          href="https://www.instagram.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://image.flaticon.com/icons/png/512/124/124032.png"
+            alt="logo-instagram"
+            class="icono"
+          />
+        </a>
+
+        <a href="http://twitter.com/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://image.flaticon.com/icons/png/512/124/124021.png"
+            alt="logo-twitter"
+            class="icono"
+          />
+        </a>
+      </div>
+    </footer>
+
+    <!-- MODAL NEW UPDATE -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2 id="tituloModal"></h2>
+        </div>
+        <div class="modal-body">
+          <form novalidate>
+            <input
+              type="text"
+              placeholder=" nombre"
+              id="nombre"
+              autocomplete="off"
+              minlength="3"
+              required
+            />
+            <input
+              type="number"
+              placeholder=" precio"
+              id="precio"
+              autocomplete="off"
+              min="1"
+              required
+            />
+
+            <textarea
+              name="textarea"
+              rows="2"
+              placeholder=" descripción"
+              id="descripcion"
+              maxlength="80"
+            ></textarea>
+            <input
+              type="text"
+              placeholder=" imagen"
+              id="foto"
+              autocomplete="off"
+              required
+            />
+            <div class="row">
+              <select name="categoria" id="categoria">
+                <option style="display: none">categoria</option>
+
+                <option value="sombra">sombra</option>
+                <option value="sol">sol</option>
+                <option value="agua">agua</option>
+              </select>
+              <input
+                type="number"
+                placeholder="stock"
+                id="stock"
+                autocomplete="off"
+                required
+                class="stock"
+                min="1"
+              />
+            </div>
+            <div class="float-right">
+              <button type="button" id="but-duo"></button>
+              <button type="button" onclick="closeModal()" class="boton-close">
+                Cerrar
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+    <!-- MODAL shopping cart -->
+    <div id="shoppingCart" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="closeCarrito()">&times;</span>
+          <!-- <h2 id="tituloCarrito"> Carrito</h2> -->
+          <h2 id="total"></h2>
+        </div>
+        <div class="modal-body">
+         <ul class="listaProductos" id="listaProductos">
+           
+         <ul/>
+        </div>
+        <div class="modal-footer">
+          
+        </div>
+      </div>
+    </div>
+
+   
+  </body>
+  <!-- sweetalert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="js/app.js"></script>
+  <script src="js/carrito.js"></script>
+  <script src="js/wow.js"></script>
+
+ 
+</html>
